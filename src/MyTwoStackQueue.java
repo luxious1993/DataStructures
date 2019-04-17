@@ -1,16 +1,17 @@
 import java.util.LinkedList;
 
-public class MyQueueByTwoStack implements MyQueue {
+public class MyTwoStackQueue implements MyQueue {
     private LinkedList<Integer> stack1;
     private LinkedList<Integer> stack2;
     private LinkedList<Integer> minStack;
-    public MyQueueByTwoStack() {
+    public MyTwoStackQueue() {
         this.stack1 = new LinkedList<>();
         this.stack2 = new LinkedList<>();
     }
     @Override
-    public void offer(int value) {
+    public boolean offer(int value) {
         stack1.offerFirst(value);
+        return true;
     }
     @Override
     public Integer poll() {
