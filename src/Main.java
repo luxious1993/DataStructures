@@ -1,9 +1,13 @@
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 public class Main {
     public static void main(String[] args) {
 //        testMySingleNodeList();
-        testMyQueue();
+//        testMyQueue();
 //        testMyStack();
 //        testMyDeque();
+        testMyPriorityQueue();
     }
 
     private static void testMySingleNodeList() {
@@ -76,6 +80,47 @@ public class Main {
         }
         while (!deque.isEmpty()) {
             System.out.print(deque.pollFirst() + " , ");
+        }
+    }
+
+    private static void testMyPriorityQueue() {
+        MyPriorityQueue<Integer> minHeap = new MyPriorityQueue<>(new Integer[] {2,3,4,1,4,6});
+        while (!minHeap.isEmpty()) {
+            System.out.print(minHeap.poll() + " , ");
+        }
+        System.out.println();
+
+        MyPriorityQueue<Integer> maxHeap = new MyPriorityQueue<>(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2 - o1;
+            }
+        });
+        maxHeap.offer(2);
+        maxHeap.offer(3);
+        maxHeap.offer(4);
+        maxHeap.offer(1);
+        maxHeap.offer(4);
+        maxHeap.offer(6);
+        while (!maxHeap.isEmpty()) {
+            System.out.print(maxHeap.poll() + " , ");
+        }
+        System.out.println();
+
+        MyPriorityQueue<Integer> maxHeap2 = new MyPriorityQueue<>(5, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2 - o1;
+            }
+        });
+        maxHeap2.offer(2);
+        maxHeap2.offer(3);
+        maxHeap2.offer(4);
+        maxHeap2.offer(1);
+        maxHeap2.offer(4);
+        maxHeap2.offer(6);
+        while (!maxHeap2.isEmpty()) {
+            System.out.print(maxHeap2.poll() + " , ");
         }
     }
 }
